@@ -1,4 +1,4 @@
-# gcdlab4sales1
+# GCD-Lab-4-Sales-1
 An introductory lab to GCD
 
 ## UI discovery
