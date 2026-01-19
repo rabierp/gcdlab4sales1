@@ -9,13 +9,13 @@ An introductory lab to GCD
 ## Launch your own VM
 - Select the Compute Engine service in the Services Menu
 
-## Run a DB
+## 2 Ways to run a DB
 ### Run a DB on your own instance
 #### Install PostgreSQL
 
 #### Load Data
 
-#### Query your DB
+#### Query your local DB
 
 ### Run Cloud SQL
 
@@ -23,9 +23,9 @@ An introductory lab to GCD
 
 #### Load Data
 
-#### Query your instance
+#### Query your Cloud DB
 
-## Query a Data Ware House
+## Query the Big Query!
 ### Connect to a Data set
 
 ### Run a query
