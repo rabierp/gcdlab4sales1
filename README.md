@@ -8,6 +8,10 @@ An introductory lab to GCD
 
 ## Launch your own VM
 - Select the Compute Engine service in the Services Menu
+- Click 'Create an instance'
+- discover the menu and follow your instructor's guidelines
+- Click 'Create'
+- when the VM has started (checkbox is green), click on 'SSH' on the right of the VM row
 
 ## 2 Ways to run a DB
 ### Run a DB on your own instance
