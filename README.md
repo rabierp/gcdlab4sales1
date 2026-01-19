@@ -6,7 +6,7 @@ An introductory lab to GCD
 - Click on the burger menu on the top left of the UI. See what services are available
 - Pick your project in the list selector
 
-## Create your own instance
+## Launch your own VM
 - Select the Compute Engine service in the Services Menu
 
 ## Run a DB
