@@ -12,7 +12,10 @@ An introductory lab to GCD
 - discover the menu and follow your instructor's guidelines
 - Click 'Create'
 - when the VM has started (checkbox is green), click on 'SSH' on the right of the VM row
-
+- type 'sudo apt update'
+- type 'sudo apt install git'
+- type 'git clone https://github.com/rabierp/gcdlab4sales1'
+- type 'cd gcdlab4sales1'  
 ## 2 Ways to run a DB
 ### Run a DB on your own instance
 #### Install PostgreSQL
