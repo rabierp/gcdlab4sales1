@@ -12,7 +12,7 @@ An introductory lab to GCD
 - discover the menu and follow your instructor's guidelines
 - Click 'Create'
 - when the VM has started (checkbox is green), click on 'SSH' on the right of the VM row
-- type
+- in the teminal window, type:
 ```
 sudo apt update
 sudo apt install git
