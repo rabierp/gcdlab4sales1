@@ -52,3 +52,25 @@ cd gcdlab4sales1
 bq load --autodetect --skip_leading_rows=1 --source_format=CSV fun_data.squirrels_2018 ./2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv
 ``` 
 ### Run a query
+- Go to the "Query" Tab in BigQuery Studio and copy / Paste the following SQL code:
+```
+SELECT
+  `Primary Fur Color` AS couleur,
+  COUNT(*) AS total_ecureuils,
+  -- Calcul du pourcentage de "bravoure" (ceux qui s'approchent)
+  ROUND((COUNTIF(Approaches = true) / COUNT(*)) * 100, 2) AS pourcent_amicaux,
+  -- Calcul du pourcentage d'hyperactivité (ceux qui courent ou grimpent)
+  ROUND((COUNTIF(Running = true OR Climbing = true) / COUNT(*)) * 100, 2) AS pourcent_sportifs,
+  -- Ceux qui mangent tranquillement
+  ROUND((COUNTIF(Eating = true) / COUNT(*)) * 100, 2) AS pourcent_gourmands
+FROM
+  `<COPY_YOUR_PROJECT_NAME>.fun_data.squirrels_2018` -- <--- Change ceci avec ton nom de table
+WHERE
+  `Primary Fur Color` IS NOT NULL
+GROUP BY
+  1
+ORDER BY
+  pourcent_amicaux DESC;
+```
+- Click Run
+- See the results at the bottom of the page
