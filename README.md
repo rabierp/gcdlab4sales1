@@ -19,22 +19,50 @@ sudo apt install git
 git clone https://github.com/rabierp/gcdlab4sales1
 cd gcdlab4sales1
 ```
-## 2 Ways to run a DB
-### Run a DB on your own instance
-#### Install PostgreSQL
+## Run a Cloud SQL managed DB
+### Deploy a Cloud SQL Postgres Instance
+- Go to Menu 'Cloud SQL Postgresql'
+- Click 'Create Instance'
+- Follow the Instructions
+** OR **
+From your previously created VM:
+```
+gcloud services enable sqladmin.googleapis.com
+gcloud sql instances create mabase-prod --database-version=POSTGRES_17 --region=u-germany-northeast1 --tier=db-perf-optimized-C-4 --availability-type=REGIONAL --backup-start-time=02:00
+gcloud sql users set-password postgres --instance=mabase-prod --password=MON_BEAU_MDP
+```
+- Navigate the Console UI to observe the setup and features (follow instructions)
+### Upload Data
+From your previously created VM:
+```
+sudo apt install postgresql-client
+gcloud sql instances patch mabase-prod --authorized-networks=$(curl -s ifconfig.me)
+export IP=`gcloud sql instances describe mabase-prod --format="value(ipAddresses[0].ipAddress)"`
 
-#### Upload Data
-
-#### Query your local DB
-
-### Run Cloud SQL
-
-#### Deploy a Cloud SQL Postgres Instance
-
-#### Upload Data
-
-#### Query your Cloud DB
-
+psql -h $IP -U postgres -d northwind -f northwind.sql
+```
+- Navigate the Console UI to observe the setup and features (follow instructions)
+### Query your Cloud SQL DB
+- Connect to your Cloud SQL instance
+```
+gcloud sql connect mabase-prod --user=postgres --database=northwind
+```
+- Copy / Paste this SQL code to query the 5 most expensive products:
+```
+SELECT product_name, unit_price 
+FROM products 
+ORDER BY unit_price DESC 
+LIMIT 5;
+```
+- Copy / Paste this SQL code to query "Who ordered what":
+```
+SELECT c.company_name, p.product_name, o.order_date
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+JOIN order_details od ON o.order_id = od.order_id
+JOIN products p ON od.product_id = p.product_id
+LIMIT 5;
+```
 ## Query the Big Query!
 ### Upload Data
 - Download the '2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv' file from this GitHub repository
