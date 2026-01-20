@@ -23,7 +23,7 @@ cd gcdlab4sales1
 ### Run a DB on your own instance
 #### Install PostgreSQL
 
-#### Load Data
+#### Upload Data
 
 #### Query your local DB
 
@@ -31,11 +31,24 @@ cd gcdlab4sales1
 
 #### Deploy a Cloud SQL Postgres Instance
 
-#### Load Data
+#### Upload Data
 
 #### Query your Cloud DB
 
 ## Query the Big Query!
-### Connect to a Data set
-
+### Upload Data
+- Download the '2018 Central Park Squirrel Census - Squirrel Data.csv' file from this GitHub repository
+- Go to BigQuery in the burger menu
+- In your BQ project, click on the 3 vertical dots and select 'Create a Dataset' and name it 'fun_data'
+- Then, click on the 3 vertical dots of this dataset and select 'Create a Table' 
+- Source: Import, then select the Squirrels file
+- Table: squirrels_2018
+- Click Autodetect
+- In Advanced Options, set 'headlines to ignore'to '1'
+- Click 'Create Table'
+** OR **
+- type this command to upload the NYC Squirrels CSV file to a table in BigQuery:
+```
+bq load --autodetect --skip_leading_rows=1 --source_format=CSV fun_data.squirrels_2018 ./2018-Central-Park-Squirrel-Census-Squirrel-Data.csv
+``` 
 ### Run a query
